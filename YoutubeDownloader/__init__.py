@@ -1,18 +1,25 @@
-from YoutubeDownloader import Downloader
+from pytube import *
+import math
+from YoutubeDownloader import Path
 
+
+def direccionDescarga():
+        return Path.get_download_folder()
 
 def main():
-    link= input("Introduce el link: ")
+    yt = YouTube(input("Introduce el link"))
+    print("Cargando...")
+    title = yt.title
+    author = yt.author
+    stream = yt.streams.get_highest_resolution()
+    downloadPath = direccionDescarga()
+    print("Cargando...")
+    filesize = stream.filesize
+    filesize = (filesize) / math.pow(2, 20)
+    filesize = round(filesize, 2)
+    print("Cargando...")
 
-    title = Downloader.instanciaYT(link).title
-    author = Downloader.instanciaYT(link).author
-    stream = Downloader.instanciaStream()
-    downloadPath = Downloader.direccionDescarga()
 
-    print("Cargando...")
-    print("Cargando...")
-    filesize = Downloader.Downloader.tamañoArchivo()
-    print("Cargando...")
 
 
     print(f"Descargando video \n "
