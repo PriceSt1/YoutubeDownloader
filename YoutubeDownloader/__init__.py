@@ -8,7 +8,9 @@ from uuid import UUID
 def main():
     salir=True
     while(salir):
-        yt = YouTube(input("Introduce el link: "))
+        link = input("Introduce el link: ")
+        yt = YouTube(link)
+
         print("Cargando...")
         title = yt.title
         author = yt.author
@@ -19,6 +21,17 @@ def main():
         filesize = (filesize) / math.pow(2, 20)
         filesize = round(filesize, 2)
         print("Cargando...")
+        yt.captions.all
+
+        #en_caption = yt.captions.get_by_language_code('en')
+
+        #en_caption_convert_to_srt = (en_caption.generate_srt_captions())
+
+        #print(en_caption_convert_to_srt)
+        #save the caption to a file named Output.txt
+        #text_file = open(downloadPath,"Output.txt", "w")
+        #text_file.write(en_caption_convert_to_srt)
+        #text_file.close()
 
 
 
