@@ -1,20 +1,30 @@
-from pytube import *
+from YoutubeDownloader import Downloader
 
 
-yt = YouTube(input("Introduce el link de descarga: "))
-title = yt.title
-author = yt.author
-stream = StreamQuery.get_highest_resolution()
+def main():
+    link= input("Introduce el link: ")
+
+    title = Downloader.instanciaYT(link).title
+    author = Downloader.instanciaYT(link).author
+    stream = Downloader.instanciaStream()
+    downloadPath = Downloader.direccionDescarga()
+
+    print("Cargando...")
+    print("Cargando...")
+    filesize = Downloader.Downloader.tamañoArchivo()
+    print("Cargando...")
 
 
+    print(f"Descargando video \n "
+            f"Titulo: {title} \n "
+            f"Autor: {author} \n "
+            f"carpeta: {downloadPath} \n "
+            f"El video ocupa {filesize} MiB")
 
-stream.download(yt)
+    print("Iniciando descarga")
 
+    stream.download(output_path=downloadPath)
 
-filesize = stream.filesize
-
-
-
-print(filesize)
-print(title)
-print(author)
+    print("Descarga terminada")
+if __name__ == '__main__':
+        main()
